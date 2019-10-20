@@ -1,5 +1,8 @@
 function drawConcentratonLayers(altitudes, ozoneConcentrations){
     // center should always be x: 102, y: 182
+
+    console.log(altitudes);
+    console.log(ozoneConcentrations);
     
     var mapRange = function(from, to, s) {
       return to[0] + (s - from[0]) * (to[1] - to[0]) / (from[1] - from[0]);

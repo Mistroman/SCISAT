@@ -8,5 +8,14 @@ console.log("Hi in Main");
            }
        }
        drawGraph(alt_conc, "Ozone");
+       let altitudes = [];
+       let ozoneConc = [];
+
+       for(i = 0; i < alt_conc.length; i++){
+           altitudes[i] = alt_conc[i][2];
+           ozoneConc[i] = alt_conc[i][1];
+
+       }
+       drawConcentratonLayers(altitudes, ozoneConc);
 
       });
