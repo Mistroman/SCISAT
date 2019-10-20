@@ -1,4 +1,4 @@
-var options = {atmosphere: true, center: [0, 0], zoom: 0};
+var options = {atmosphere: true, center: [0, 0], zoom: 1.5, zooming: false};
 var earth = new WE.map('map', options);
 function initialize() {
   

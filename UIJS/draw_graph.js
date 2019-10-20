@@ -17,8 +17,27 @@ let myChart = document.getElementById("myChart").getContext('2d');
         options:{
           title: {
           display: true,
-          text: 'Gas Concentration of Gases vs Time'
-        }}
+          text: 'Gas Concentration of Ozone vs Time'
+        },
+
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Gas Concentration (ppm)'
+            }
+              
+          }],
+
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Time'
+            }
+              
+          }]
+      }
+      }
       });
 
     }
