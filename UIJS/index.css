@@ -1,14 +1,21 @@
       /* Always set the map height explicitly to define the size of the div
+      
        * element that contains the map. */
 
       
       body {
+        font-family: 'Modak', cursive;
 	      background-image: url("background_blurred.png");
         background-size:cover;
       } 
 
-
+      
+       #Heading {
+        font-family: 'Modak', cursive;
+        font-size: 60px;
+       }
        #concLayers {
+         font-family: 'Modak', cursive;
          background-image: url("Arctic1.jpg");
          background-repeat: no-repeat;
          background-position-y: 250px;
@@ -20,6 +27,7 @@
 
       }
        #map {
+        font-family: 'Modak', cursive;
         position: absolute;
         left: 350px;
         height: 50%;
@@ -29,14 +37,17 @@
       
       }
       #Graph {
-        background-color: white;
+        font-size: 60px;
+        font-family: 'Modak', cursive;
+        background-image: url("grey.jpeg");
         height: 50%;
         width: 90%;
    
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-    
+        font-size: 40px;
+        font-family: 'Modak', cursive;
         height: 100%;
         margin: 0;
         padding: 0;

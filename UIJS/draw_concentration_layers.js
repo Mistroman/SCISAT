@@ -11,9 +11,9 @@ function drawConcentratonLayers(altitudes, ozoneConcentrations){
         var r = mapRange([10,0], [0,255], ozoneConcentrations[i]);
         var radius = mapRange([5, 95], [102, 182], altitudes[i]);
         rs = r.toString(10);
-        console.log(r);
+        //console.log(r);
         color_string  = "rgb(255," + rs +", "+ rs +")";
-        console.log(color_string);
+        //console.log(color_string);
         drawCircle(102, 182, radius, 0, 2*Math.PI, color_string);
       }
 

@@ -3,7 +3,7 @@ var earth = new WE.map('map', options);
 function initialize() {
   
   
-  WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
           minZoom: 0,
           maxZoom: 5,
           attribution: 'NASA'
