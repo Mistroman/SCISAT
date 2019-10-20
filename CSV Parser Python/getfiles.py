@@ -2,10 +2,13 @@ import pandas as pd
 from urllib.request import urlopen
 import json
 import io
-import requests
-
+import requests	
 import csv
 from collections import defaultdict
+
+import sys
+import re
+
 
 def date(main_url):
 	url1 = urlopen(main_url).read().decode('utf_8')
@@ -84,48 +87,48 @@ def runForSunData(main_url, time_frame, sundata):
 	molecule_csv = pd.read_csv(main_url + '/' + time_frame + '/' + sundata + '/' + '/Data-L2_retreival_grid/' + 'O3.csv',  header=None)
 	z_csv = pd.read_csv(main_url + '/' + time_frame + '/' + sundata + '/' + '/Data-L2_retreival_grid/' + 'z.csv',  header=None)
 
-	# Export = molecule_csv.to_json()
-
-	# with open('data1.txt', 'w') as outfile:
-	# 	json.dump(Export, outfile)
-	df_new = pd.concat([molecule_csv, z_csv], axis =1)
+	df_new = pd.concat([molecule_csv, z_csv], axis =1, names=["Sequence", "Concentration", "Height"])
 	df_new.iloc[1:, 1:]
 	# df_new1 = df_new.iloc[0, 0]
 	df_new.to_csv("df_new.csv")
-	# molecule_csv.to_csv("molecule_csv.csv")
-	# z_csv.to_csv("z_csv.csv")
+	
+	csvFilePath= 'df_new.csv'
+	jsonFilePath = 'df.json'
 
-	# with open('temp.json', 'w') as f:
-	# 	f.write(molecule_csv.to_json(orient='records', lines=True))
+	df_new.to_json(jsonFilePath,orient='values')
+	with open(jsonFilePath, 'r') as f:
+		data3 = json.loads(f.read())
 
-	data[sundata] = []
-	data[sundata].append({
-		'occultation_name' : occultation_name,
-		'event_type' : event_type,
-		'date' : date,
-		'date_MJD2000' : date_MJD2000,
-		'latitude' : latitude,
-		'longitude' : longitude,
-		'beta_angle ' : beta_angle,
-		'start_timetag' : start_timetag,
-		'end_timetag' : end_timetag,
-		'start_time' : start_time,
-		'end_time' : end_time,
-		'molecule_range' : molecule_range,
-		'molecule_name' : molecule_name,
-		# 'lol' : dictionaryToDump
-		# 'molecule_csv' : molecule_csv,
-		# 'z_csv' : z_csv
-	})
-
-	with open('data_' + occultation_name + '.txt', 'w') as outfile:
+	data["occultation_name"] = []
+	data["occultation_name"].append(occultation_name)
+	data["event_type"] = []
+	data['event_type'].append(event_type)
+	data["date"] = []
+	data['date'].append(date)
+	data["date_MJD2000"] = []
+	data['date_MJD2000'].append(date_MJD2000)
+	data["latitude"] = []
+	data['latitude'].append(latitude)
+	data["longitude"] = []
+	data['longitude'].append(longitude)
+	data["beta_angle"] = []
+	data['beta_angle'].append(beta_angle)
+	data["start_timetag"] = []
+	data['start_timetag'].append(start_timetag)
+	data["end_timetag"] = []
+	data['end_timetag'].append(end_timetag)
+	data["start_time"] = []
+	data['start_time'].append(start_time)
+	data["end_time"] = []
+	data['end_time'].append(end_time)
+	data["molecule_range"] = []
+	data['molecule_range'].append(molecule_range)
+	data["molecule_name"] = []
+	data['molecule_name'].append(molecule_name)
+	data["alt_conc"] = []
+	data['alt_conc'].append(data3)
+	with open('data.json', 'w') as outfile:
 		json.dump(data, outfile)
-
-	# data = urlopen('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/SCISAT/Data_format%20CSV/2005-02/sr7929/Data-L2_1km_grid/C2H2.csv').read().decode('utf_8')
-	# print(data)
-	# f = open('htmlcode.txt','w')
-	# f.write(page_source)
-	# f.close()
 
 def main():
 	main_url = 'ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/SCISAT/Data_format%20CSV'
@@ -135,6 +138,8 @@ def main():
 		for sundata in sundata_list:
 			# print(sundata + " " + time_frame + "\n")
 			runForSunData(main_url, time_frame, sundata)
+			break
+		break
 
 if __name__ == "__main__":
 	main()
