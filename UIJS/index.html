@@ -34,7 +34,7 @@
   <body onload="initialize()">
 
     <h3 align = "center"; style = "color:white">Earth</h3>
-    <canvas id = "concLayers" , style="height:500px; width:768px; margin-left: auto; margin-right: auto;">
+    <canvas id = "concLayers" , style="height:500px; width:970px; margin-left: auto; margin-right: auto;">
       
     </canvas>
     </div>
@@ -68,12 +68,8 @@
 
     <!-- The following script is just to test the display of concetration lines for ozone per altitude -->
     <script>
-        function drawConcentratonLayers(altitudes, ozoneConcentrations){
-          drawCircle(50, 100, 50, 0, 2*Math.PI,"red");
-  
-        }
-        let altitudes = [];
-        let ozoneConcentrations = [];
+        let altitudes = [5, 12, 18, 42, 56, 67, 75, 79, 87, 82, 81, 93];
+        let ozoneConcentrations = [0.236, 3, 5, 9, 2, 3, 4, 5, 5, 5, 6, 4.2];
         drawConcentratonLayers(altitudes, ozoneConcentrations);
       
       </script>

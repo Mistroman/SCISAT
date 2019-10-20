@@ -12,11 +12,10 @@
          background-image: url("Arctic1.jpg");
          background-repeat: no-repeat;
          background-position-y: 250px;
-         background-position-x: -140px;
+         background-position-x: -170px;
          position: absolute;
-         right: 900px;
+         right: 700px;
          height: 50%;
-         width: 90%;
          background-color: #000;
 
       }
