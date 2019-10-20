@@ -19,7 +19,7 @@ function drawConcentratonLayers(altitudes, ozoneConcentrations){
         //console.log(r);
         color_string  = "rgb(255," + rs +", "+ rs +")";
         //console.log(color_string);
-        drawCircle(102, 182, radius, 0, 2*Math.PI, color_string);
+        drawCircle(112, 182, radius, 0, 2*Math.PI, color_string);
       }
 
       
