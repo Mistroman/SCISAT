@@ -8,8 +8,8 @@ function drawConcentratonLayers(altitudes, ozoneConcentrations){
 
     for(i = 0; i<altitudes.length; i++){
         let color_string;
-        var r = mapRange([10,0], [0,255], ozoneConcentrations[i]);
-        var radius = mapRange([5, 95], [102, 182], altitudes[i]);
+        var r = mapRange([10,-2], [0,255], ozoneConcentrations[i]);
+        var radius = mapRange([5, 160], [102, 182], altitudes[i]);
         rs = r.toString(10);
         //console.log(r);
         color_string  = "rgb(255," + rs +", "+ rs +")";
