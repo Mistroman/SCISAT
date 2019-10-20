@@ -1,4 +1,4 @@
-var options = {atmosphere: true, center: [0, 0], zoom: 1.5, zooming: false};
+var options = {atmosphere: true, center: [0, 0], zoom: 1.5, zooming: false, atmosphere: true, sky: true};
 var earth = new WE.map('map', options);
 function initialize() {
   
@@ -10,3 +10,4 @@ function initialize() {
         }).addTo(earth);
         
       }
+    

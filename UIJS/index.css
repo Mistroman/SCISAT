@@ -1,15 +1,28 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
-       
+      
       body {
 	      background-image: url("background_blurred.png");
-        background-repeat:no-repeat;
         background-size:cover;
       } 
 
 
+       #concLayers {
+         background-image: url("Arctic1.jpg");
+         background-repeat: no-repeat;
+         background-position-y: 250px;
+         background-position-x: -140px;
+         position: absolute;
+         right: 900px;
+         height: 50%;
+         width: 90%;
+         background-color: #000;
+
+      }
        #map {
+        position: absolute;
+        left: 350px;
         height: 50%;
         width: 90%;
         background-color: #000;

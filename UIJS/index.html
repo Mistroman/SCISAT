@@ -32,8 +32,15 @@
 
 
   <body onload="initialize()">
+
     <h3 align = "center"; style = "color:white">Earth</h3>
-    <div id="map" style="height:500px; width:1500px; margin-left: auto; margin-right: auto;"></div>
+    <canvas id = "concLayers" , style="height:500px; width:768px; margin-left: auto; margin-right: auto;">
+      
+    </canvas>
+    </div>
+    <div id="map" style="height:500px; width:800px; margin-left: auto; margin-right: auto;">
+    </div>
+    
     <script src="http://www.webglearth.com/v2/api.js"></script>
     <script src = "index.js"></script>
     <div id="Graph" style="height:auto; width:1500px; margin-left: auto; margin-right: auto;">
@@ -60,20 +67,19 @@
     </script>
 
     <!-- The following script is just to test the display of concetration lines for ozone per altitude -->
-
     <script>
-      function drawConcentratonLayers(altitudes, ozoneConcentrations){
-
-      }
-      let altitudes = [];
-      let ozoneConcentrations = [];
-      drawConcentratonLayers(altitudes, ozoneConcentrations);
-    
-    </script>
-
-
+        function drawConcentratonLayers(altitudes, ozoneConcentrations){
+          drawCircle(50, 100, 50, 0, 2*Math.PI,"red");
+  
+        }
+        let altitudes = [];
+        let ozoneConcentrations = [];
+        drawConcentratonLayers(altitudes, ozoneConcentrations);
+      
+      </script>
 
 
   </body>
+  
 
 </html>
