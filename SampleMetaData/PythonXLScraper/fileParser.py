@@ -97,8 +97,8 @@ import csv
 import sqlite3
   
 # csv file name 
-O3filename = "O3.csv"
-zfilename = "O3.csv"
+O3filename = "molecule_csv.csv"
+zfilename = "z_csv.csv"
   
 # initializing the titles and rows list 
 fields = [] 
@@ -250,11 +250,15 @@ else:
 # occultation_1 = (occultation_name, latitude, longitude, event_type, start_time, end_time)
 
 
-print('\nThe rows are:\n') 
+print('\nThe rows arre:\n') 
 for index, O3row in enumerate(O3rows[:]): 
     zrow = zrows[index]
+    if index == 0:
+        continue
     # parsing each column of a O3row 
     for jndex, O3col in enumerate(O3row): 
+        if jndex == 0:
+            continue
         zcol = zrow[jndex]
         if O3col != "-999" and O3col != "-888":
             print("Concentration at altitude {}km: {}PPV".format(zcol,O3col))

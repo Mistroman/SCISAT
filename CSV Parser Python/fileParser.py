@@ -97,8 +97,8 @@ import csv
 import sqlite3
   
 # csv file name 
-O3filename = "O3.csv"
-zfilename = "O3.csv"
+O3filename = "molecule_csv.csv"
+zfilename = "z_csv.csv"
   
 # initializing the titles and rows list 
 fields = [] 
@@ -139,7 +139,7 @@ def create_occulation(conn, project):
     :param project:
     :return: project id
     """
-    sql = ''' INSERT INTO occulation(name,begin_date,end_date)
+    sql = ''' INSERT INTO occulation()
               VALUES(?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, project)
@@ -216,9 +216,10 @@ c.execute("DROP TABLE IF EXISTS plotData")
 
 
 sql_create_plotData_table = """ CREATE TABLE plotData (
-                                        occultation_name text PRIMARY KEY,
+                                        occultation_name text,
                                         altitude real,
                                         concentration text
+                                        PRIMARY KEY (occultation_name, altitude)
                                     ); """
 
 sql_create_occultation_table = """ CREATE TABLE occultation (
@@ -252,11 +253,15 @@ else:
 
 print('\nThe rows are:\n') 
 for index, O3row in enumerate(O3rows[:]): 
+    if index == 0:
+        continue
     zrow = zrows[index]
     # parsing each column of a O3row 
     for jndex, O3col in enumerate(O3row): 
+        if jndex == 0:
+            continue
         zcol = zrow[jndex]
-        if O3col != "-999" and O3col != "-888":
+        if O3col != "-999.0" and O3col != "-888.0":
             print("Concentration at altitude {}km: {}PPV".format(zcol,O3col))
             plotData_1 = (index*100+jndex, zcol, O3col)
             create_plotData(conn, plotData_1)
