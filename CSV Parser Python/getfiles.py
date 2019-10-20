@@ -7,9 +7,31 @@ import requests
 import csv
 from collections import defaultdict
 
-def checkArcticCircle():
-	validity = true
-	return (validity)
+def date(main_url):
+	url1 = urlopen(main_url).read().decode('utf_8')
+	yr = []
+	for word in url1.split():
+		if(("200" in word or "201" in word) and int(word.split('-')[0]) <= 2004):
+			yr.append(word)
+	return yr	
+	#print(yr)
+	
+def sun(main_url, time_frame):	
+	ss = []
+	#for y in yr:
+	url2 = urlopen(main_url +  '/' + time_frame + '/').read().decode('utf_8')
+	for occult in url2.split():
+		if(("ss" in occult or "sr" in occult) and not "-" in occult ):
+			ss.append(occult)
+			#print(word)
+	#print(ss)
+	return ss
+
+def checkArcticCircle(latitude):
+	if (float(latitude) >= 60):
+		return True
+	else:
+		return False
 
 def runForSunData(main_url, time_frame, sundata):
 	data = {}
@@ -51,6 +73,11 @@ def runForSunData(main_url, time_frame, sundata):
 			# print(word[13:])
 		if(word.startswith("end_time =")):
 			end_time = word[11:]
+
+	validity = checkArcticCircle(latitude)
+
+	if(validity != True):
+		return
 	# occultation_name, event_type, date, date_MJD2000, latitude, longitude, beta_angle, start_timetag, end_timetag, start_time, end_time = getMetaData(lines)
 	molecule_range = "5-95"
 	molecule_name = "O3"
@@ -65,8 +92,8 @@ def runForSunData(main_url, time_frame, sundata):
 	df_new.iloc[1:, 1:]
 	# df_new1 = df_new.iloc[0, 0]
 	df_new.to_csv("df_new.csv")
-	molecule_csv.to_csv("molecule_csv.csv")
-	z_csv.to_csv("z_csv.csv")
+	# molecule_csv.to_csv("molecule_csv.csv")
+	# z_csv.to_csv("z_csv.csv")
 
 	# with open('temp.json', 'w') as f:
 	# 	f.write(molecule_csv.to_json(orient='records', lines=True))
@@ -91,7 +118,7 @@ def runForSunData(main_url, time_frame, sundata):
 		# 'z_csv' : z_csv
 	})
 
-	with open('data.txt', 'w') as outfile:
+	with open('data_' + occultation_name + '.txt', 'w') as outfile:
 		json.dump(data, outfile)
 
 	# data = urlopen('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/SCISAT/Data_format%20CSV/2005-02/sr7929/Data-L2_1km_grid/C2H2.csv').read().decode('utf_8')
@@ -102,7 +129,12 @@ def runForSunData(main_url, time_frame, sundata):
 
 def main():
 	main_url = 'ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/SCISAT/Data_format%20CSV'
-	runForSunData(main_url, '2004-04', 'sr3725')
+	time_frame_list = date(main_url)
+	for time_frame in time_frame_list:
+		sundata_list = sun(main_url, time_frame)
+		for sundata in sundata_list:
+			# print(sundata + " " + time_frame + "\n")
+			runForSunData(main_url, time_frame, sundata)
 
 if __name__ == "__main__":
 	main()
