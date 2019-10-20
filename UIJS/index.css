@@ -1,5 +1,14 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+
+       
+      body {
+	      background-image: url("background_blurred.png");
+        background-repeat:no-repeat;
+        background-size:cover;
+      } 
+
+
        #map {
         height: 50%;
         width: 90%;
@@ -8,7 +17,7 @@
       
       }
       #Graph {
-      
+        background-color: white;
         height: 50%;
         width: 90%;
    

@@ -8,7 +8,5 @@ function initialize() {
           maxZoom: 5,
           attribution: 'NASA'
         }).addTo(earth);
-
-
         
       }

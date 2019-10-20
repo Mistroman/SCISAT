@@ -1,3 +1,19 @@
+<!-- Author: Manu Parashar
+     Event = CSA Space Apps Challenge
+     
+     Files Required: (Include it in the same directory)
+     -AddMarker.js
+     -background_blurred.jpg
+     -draw_graph.js
+     -index.css
+     -index.js
+
+     Functionality
+     To display a marker with a message at a particur set of coordinates:
+          NewMarker(lat, long, message) # Message argument is optional
+      To draw a line graph:
+          drawGraph(dataSets, labels, dataSetLabels)
+        -->
 <!DOCTYPE html>
 <html>
   <head>.
@@ -8,16 +24,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="index.css">
   </head>
-
   <body onload="initialize()">
-    <h3 align = "center">MAP of Events </h3>
+    <h3 align = "center"; style = "color:white">Earth</h3>
     <div id="map" style="height:500px; width:1500px; margin-left: auto; margin-right: auto;"></div>
-    
     <script src="http://www.webglearth.com/v2/api.js"></script>
     <script src = "index.js"></script>
-    <div id="Gaph"></div>
+    <div id="Graph" style="height:auto; width:1500px; margin-left: auto; margin-right: auto;">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" ></script>
     <h3 align = "center">Graph of Gas</h3>
-    <script> NewMarker(53, -113,"Hi from Edmonton")</script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <div class="container">
+    <canvas id = "myChart"></canvas>
+    </div></div>
+    <script src = "draw_graph.js"></script>
+
+    <!-- The following script is just to test Graph -->
+
+    <script>
+      labels = ["JA05","FE05","MR05","AP05","MY05","JU05","JL05","AU05","SE05","OC05","NO05","DE05"];
+      dataSets = [];
+      dataSets[0] = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240];
+      dataSetLabels = [];
+      dataSetLabels[0] = "Ozone"
+      drawGraph(dataSets,labels,dataSetLabels);
+    </script>
     
   </body>
 </html>
