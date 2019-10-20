@@ -1,14 +1,23 @@
-function drawGraph(dataSets, labels, dataSetLabels){
+function drawGraph(dataSets, dataSetLabel){
+  console.log("Inside drawGraph")
+  let dataArray = [];
+  for(i = 0; i< dataSets.length; i++){
+    let point = {
+      x: dataSets[i][0],
+      y: dataSets[i][1],
+    };
+
+    dataArray.push(point);
+  }
 
 let myChart = document.getElementById("myChart").getContext('2d');
       let gasConcChart = new Chart(myChart, {
-        type:'line',
+        type:'scatter',
         data:{
-          labels: labels,
           datasets:[{
+            label: dataSetLabel,
 
-              data: dataSets[0],
-              label: dataSetLabels[0],
+              data: dataArray,
               borderColor: "#3e95cd",
               fill: false
 
@@ -17,14 +26,14 @@ let myChart = document.getElementById("myChart").getContext('2d');
         options:{
           title: {
           display: true,
-          text: 'Gas Concentration of Ozone vs Time'
+          text: 'Gas Concentration of Ozone vs Altitude'
         },
 
         scales: {
           yAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Gas Concentration (ppm)'
+              labelString: 'Altitude (km'
             }
               
           }],
@@ -32,7 +41,7 @@ let myChart = document.getElementById("myChart").getContext('2d');
           xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Time'
+              labelString: 'Atmospheric Ozone Concentration(ppmv)'
             }
               
           }]
