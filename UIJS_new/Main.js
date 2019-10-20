@@ -17,5 +17,11 @@ console.log("Hi in Main");
 
        }
        drawConcentratonLayers(altitudes, ozoneConc);
+      
+
+       NewMarker(parseInt(json.latitude[0]), parseInt(json.longitude[0]));
 
       });
+
+
+      
