@@ -1,35 +1,91 @@
+<!-- Author: Manu Parashar
+     Event = CSA Space Apps Challenge
+     
+     Files Required: (Include it in the same directory)
+     -AddMarker.js
+     -background_blurred.jpg
+     -draw_graph.js
+     -index.css
+     -index.js
+     -drawCircle.js
+     -draw_concentration_layers.js
+     -Arctic-1.jpg
+
+
+     Functionality:
+     To display a marker with a message at a particur set of coordinates:
+          NewMarker(lat, long, message) # Message argument is optional
+
+      To draw a scatter plot:
+          drawGraph(dataSets, dataSetLabel)
+          
+      To draw concetration lines:
+          drawConcentratonLayers(altitudes, ozoneConcentrations)
+      
+-->
+
+
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+
+
+  <head>.
+    <script src = "AddMarker.js"></script>
+    <title>Space Apps Challenge 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
   </head>
-  <body>
-    <div id="map"></div>
+
+
+
+  <body onload="initialize()">
+
+    <h3 align = "center"; style = "color:white">Earth</h3>
+    <canvas id = "concLayers" , style="height:500px; width:970px; margin-left: auto; margin-right: auto;">
+      
+    </canvas>
+    </div>
+    <div id="map" style="height:500px; width:800px; margin-left: auto; margin-right: auto;">
+    </div>
+    
+    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script src = "index.js"></script>
+    <div id="Graph" style="height:auto; width:1500px; margin-left: auto; margin-right: auto;">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" ></script>
+    <h3 align = "center">Graph</h3>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <div class="container">
+    <canvas id = "myChart"></canvas>
+    </div></div>
+    <script src = "draw_graph.js"></script>
+    <script src = "draw_concentration_layers.js"></script>
+    <script src = "drawCircle.js"></script>
+
+    <!-- The following script is just to test Graph and Marker-->
+
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+
+      NewMarker(71.7069, -42.6043,"Hi from Greenland");
+    
+      let dataSets = [[20,100], [40,50], [60,90], [80,200], [100,200], [120,10], [140,500], [160,160], [180,1000], [200,200], [220,101], [240,120]];
+      let dataSetLabel = "Ozone"
+      drawGraph(dataSets, dataSetLabel);
+
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeF1JTlCM11VBHfZ0ekx-4WVvgRGwZwLA&callback=initMap"
-    async defer></script>
+
+    <!-- The following script is just to test the display of concetration lines for ozone per altitude -->
+    <script>
+        let altitudes = [5, 12, 18, 42, 56, 67, 75, 79, 87, 82, 81, 93];
+        let ozoneConcentrations = [0.236, 3, 5, 9, 2, 3, 4, 5, 5, 5, 6, 4.2];
+        drawConcentratonLayers(altitudes, ozoneConcentrations);
+      
+    </script>
+
+
   </body>
+  
+
 </html>
