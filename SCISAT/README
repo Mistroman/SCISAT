@@ -1,0 +1,13 @@
+
+Running Instruction:
+
+Navigate to the Code\ directory. You will observe to folders, FrontEnd and
+BackEnd. The FrontEnd contains our final output in the form of a webpage/webapplication.
+To generate the web page navigate to FrontEnd\ and select index.html. Make sure
+you are using a modern browser version of Edge, or Chrome for the best result.
+
+The BackEnd\ contains our python codes responsible for scraping
+Uses python libraries like urllib,pandas and matlibplot to scrap data and graph it
+for conclusions.
+Database implementation was done but we were unfortunately unable to process the big data
+and store it.

@@ -1,0 +1,112 @@
+<!-- Author(s): Manu Parashar
+                Alireza Azimi
+     Event = CSA Space Apps Challenge
+
+     Files Required: (Include it in the same directory)
+     -AddMarker.js
+     -background_blurred.jpg
+     -draw_graph.js
+     -index.css
+     -index.js
+     -drawCircle.js
+     -draw_concentration_layers.js
+     -Arctic-1.jpg
+
+
+     Functionality:
+     To display a marker with a message at a particur set of coordinates:
+          NewMarker(lat, long, message) # Message argument is optional
+
+      To draw a scatter plot:
+          drawGraph(dataSets, dataSetLabel)
+
+      To draw concetration lines:
+          drawConcentratonLayers(altitudes, ozoneConcentrations)
+
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src = "AddMarker.js"></script>
+    <title>Space Apps Challenge 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+  </head>
+
+
+
+  <body onload="initialize()">
+    <nav class = "navbar navbar-expand-md navbar-dark bg-dark">
+      <ul class = "navbar-nav">
+        <li class = "nav-item"><a class = "nav-link" href ="http://www.asc-csa.gc.ca/eng/events/2019/space-apps-2019.asp">CSA Space Apps Challenge 5</a></li>
+        <li class = "nav-item"><a class = "nav-link" href = "https://github.com/Mistroman/SCISAT">GitHub Repo</a></li>
+
+      </ul>
+    </nav>
+
+    <h3 id = "Heading" align = "center"; style = "color:white" fo>Earth</h3>
+    <div align = "center"; style = "color:white"> Latitude and Longitude of Measurement Points Over Arctic Region </div>
+
+    <div id="map" style="height:500px; width:800px; margin-left: auto; margin-right: auto;">
+    </div>
+
+
+    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script src = "index.js"></script>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" ></script>
+    <h3 id = "Heading" align = "center"; style = "color:White" fo>Graph</h3>
+    <li class = "nav-item"><button onclick="myFunction()" style = "background-color: Orange;">Click to show graph(Scroll Down)</button></li>
+
+    <img id="Graph" src="Ozone distribution.png" style="width:100%; height:100%; margin-left:auto; display: none;"/>
+    <img id="Graph2" src="Mean Ozone distribution.png" style="width:100%; height:100%; margin-left:auto; display: none;"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <div class="container">
+    </div>
+
+    <script src = "Main.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
+
+
+  <script>
+  // Toggle graphs
+  function myFunction() {
+    var x = document.getElementById("Graph");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    x = document.getElementById("Graph2");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  </script>
+
+  </body>
+
+
+</html>
